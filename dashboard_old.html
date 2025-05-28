@@ -1,0 +1,46 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لوحة تحكم | تحفيزك</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>👋 أهلاً بك يا <span id="usernameDisplay"></span>!</h1>
+    <p>🎯 هدفك اليوم: <strong>أكمل تحديًا واحدًا</strong></p>
+
+    <button onclick="completeGoal()">✅ تم تحقيق الهدف</button>
+
+    <p class="score">🏆 نقاطك: <span id="score">0</span></p>
+
+    <button onclick="logout()" style="background-color: crimson;">🔓 تسجيل الخروج</button>
+  </div>
+
+  <script>
+    const user = localStorage.getItem("currentUser");
+    if (!user) {
+      alert("يرجى تسجيل الدخول أولاً.");
+      window.location.href = "index.html";
+    }
+
+    document.getElementById("usernameDisplay").textContent = user;
+    let score = localStorage.getItem("score_" + user) || 0;
+    document.getElementById("score").textContent = score;
+
+    function completeGoal() {
+      score++;
+      localStorage.setItem("score_" + user, score);
+      document.getElementById("score").textContent = score;
+      alert("أحسنت! ✅ تمت إضافة نقطة جديدة.");
+    }
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

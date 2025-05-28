@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasban - إنشاء حساب</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .signup-container {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .signup-container img {
+      width: 90px;
+      margin-bottom: 15px;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .signup-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .signup-container a {
+      display: block;
+      margin-top: 15px;
+      color: #2196F3;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .signup-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <img src="icon.png" alt="Kasban Logo">
+    <h2>إنشاء حساب جديد</h2>
+    <input type="text" placeholder="الاسم الكامل" id="fullname">
+    <input type="email" placeholder="البريد الإلكتروني" id="email">
+    <input type="password" placeholder="كلمة المرور" id="password">
+    <button onclick="register()">إنشاء الحساب</button>
+    <a href="index.html">العودة لتسجيل الدخول</a>
+  </div>
+
+  <script>
+    function register() {
+      const name = document.getElementById("fullname").value;
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+
+      if (!name || !email || !pass) {
+        alert("يرجى ملء جميع الحقول");
+        return;
+      }
+
+      alert("تم إنشاء الحساب بنجاح (محاكاة فقط)");
+    }
+  </script>
+</body>
+</html>

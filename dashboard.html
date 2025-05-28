@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لوحة التحكم - كسبان</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    .container {
+      max-width: 480px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px 25px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+    .points {
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .actions button {
+      background: #2980b9;
+      border: none;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 5px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 45%;
+    }
+    .actions button:hover {
+      background: #3498db;
+    }
+    .logout-btn {
+      background: #c0392b !important;
+      width: 95%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>👋 مرحبًا بك في كسبان</h1>
+    <p>رصيدك الحالي: <span class="points" id="points">0 نقطة</span></p>
+
+    <div class="actions">
+      <button onclick="alert('سيتم عرض المهام اليومية')">📋 المهام اليومية</button>
+      <button onclick="alert('سيتم عرض سجل الجوائز')">🎁 سجل الجوائز</button>
+      <button onclick="alert('سيتم فتح نظام السحب')">💸 سحب الأرباح</button>
+      <button onclick="copyInviteLink()">🤝 دعوة صديق</button>
+      <button class="logout-btn" onclick="logout()">🚪 تسجيل الخروج</button>
+    </div>
+  </div>
+
+  <script>
+    // مثال لتحديث الرصيد تلقائيًا
+    let points = 0;
+
+    function updatePoints(value) {
+      points += value;
+      document.getElementById('points').textContent = points + " نقطة";
+    }
+
+    // نسخ رابط الدعوة إلى الحافظة
+    function copyInviteLink() {
+      const inviteURL = "https://kasban.example.com/invite?ref=user123";
+      navigator.clipboard.writeText(inviteURL).then(() => {
+        alert("تم نسخ رابط الدعوة:\n" + inviteURL);
+      }).catch(() => {
+        alert("تعذر نسخ الرابط، يرجى نسخه يدويًا:\n" + inviteURL);
+      });
+    }
+
+    // تسجيل الخروج (توجيه لصفحة تسجيل الدخول)
+    function logout() {
+      if(confirm("هل تريد تسجيل الخروج؟")) {
+        window.location.href = "login.html";
+      }
+    }
+
+    // تحديث الرصيد تلقائيًا كمثال (يمكن حذفه لاحقًا)
+    setTimeout(() => updatePoints(25), 2000); // بعد ثانيتين يضاف 25 نقطة
+  </script>
+</body>
+</html>
